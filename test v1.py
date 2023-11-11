@@ -94,11 +94,14 @@ for i in range(max_tour):
                 if voisin.etat == 1:
                     cnt_voisine = cnt_voisine + 1
             #print("Voisines de", voisine.rang, "vivantes : ", cnt_voisine)
-            if cnt_voisine == 3:
+            if cnt_voisine == 3 and voisine.etat == 0 :
+                if voisine.rang not in stock :
+                    stock.append(voisine.rang)
+            elif cnt_voisine in [2,3] and voisine.etat == 1 :
                 if voisine.rang not in stock :
                     stock.append(voisine.rang)
         #print("Voisines de", cellule.rang, "vivantes : ", cnt_cellule)      
-        if cnt_cellule == 3 :
+        if cnt_cellule in [2,3] :
             if cellule.rang not in stock:
                 stock.append(cellule.rang)
     vivantes = stock
